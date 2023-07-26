@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+## tlfc
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+这个项目基于react构建，实现了一个协同文档的前端部分。
 
-## Available Scripts
+## 项目规范
 
-In the project directory, you can run:
+1.文件夹、文件名称统一小写、多个单词以连接符（-）连接；
 
-### `npm start`
+2.TypeScript变量名称采用小驼峰标识，常量全部使用大写字母，组件采用大驼峰；
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3.CSS采用普通CSS和styled-component结合来编写（全局采用普通CSS、局部采用styled-component）; 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4.整个项目统一使用函数式组件，拥抱Hooks；
 
-### `npm test`
+5.所有的函数式组件，为了避免不必要的渲染，全部使用memo进行包裹；
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+6.组件内部的状态，使用useState、useReducer；业务数据全部放在redux中管理；
 
-### `npm run build`
+7.函数组件内部基本按照如下顺序编写代码：
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+​	组件内部state管理；
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+​	redux的hooks代码；
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+​	其他hooks相关代码（比如自定义hooks）；
 
-### `npm run eject`
+​	其他逻辑代码；
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+​	返回JSX代码；
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 项目目录结构划分
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+assets：一些资源，包括css，img，字体，本地数据等。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+base-ui：多个页面的共有UI风格。
 
-## Learn More
+components：抽取出的组件。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+global：全局常量、全局注册。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+hooks：自定义hooks。
+
+router：前端路由，改变URL，但是页面不进行整体的刷新。
+
+service：网络请求。
+
+store：状态管理， 所有数据的变化，必须通过派发（dispatch）action来更新。
+
+utils：抽象出的工具。
+
+views：各页面的代码。
+
+## 接口规范
