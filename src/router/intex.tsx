@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 
-import Home from '@/views/home'
-import Mydoc from '@/views/mydoc'
-import Trash from '@/views/trash'
-import Detail from '@/views/detail'
+const Home = lazy(() => import('@/views/home'))
+const Mydoc = lazy(() => import('@/views/mydoc'))
+const Trash = lazy(() => import('@/views/trash'))
+const Detail = lazy(() => import('@/views/detail'))
 
 const routes: RouteObject[] = [
   {
