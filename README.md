@@ -2,6 +2,18 @@
 
 这个项目基于react构建，实现了一个协同文档的前端部分。
 
+## 构建方法
+
+这个项目需要先行安装npm包管理工具，安装完npm后可以按照如下顺序构建。
+
+1.   `npm install`
+
+     在对应目录下用terminal运行这个指令，这个指令用来安装本项目需要的依赖。如果因为网络原因安装失败，可使用如下指令将官方的依赖源修改为国内的依赖源：`npm config set registry https://registry.npm.taobao.org`
+
+2.   `npm run start`
+
+     该指令用来运行本项目，使用浏览器访问[http://localhost:3000](http://localhost:3000)可以看到项目的运行效果。
+
 ## 项目规范
 
 1.文件夹、文件名称统一小写、多个单词以连接符（-）连接；
