@@ -8,15 +8,16 @@ interface IProps {
 const HomeSiderbar: FC<IProps> = () => {
   return (
     <SiderbarWrapper>
+      <div className="header"></div>
+      <div className="logo">logo</div>
       <div className="nav-menu">
-        <div className="nav-title"></div>
-        <div>
+        <div className="item top">
           <Link to="/home">首页</Link>
         </div>
-        <div>
+        <div className="item">
           <Link to="/mydoc">我的文档</Link>
         </div>
-        <div>
+        <div className="item top">
           <Link to="/trash">回收站</Link>
         </div>
       </div>

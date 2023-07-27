@@ -6,6 +6,6 @@ export const HomeWrapper = styled.div`
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%;
-    height: 1080px;
+    height: 100%;
   }
 `

@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeSiderbar from './c-cpns/home-siderbar'
-import { HomeWrapper } from './style'
 import HomeMain from './c-cpns/home-main'
+import { HomeWrapper } from './style'
 // import routes from './router/index'
 const Home = () => {
   return (
