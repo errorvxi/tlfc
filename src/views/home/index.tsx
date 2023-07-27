@@ -1,20 +1,17 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import HomeSiderbar from './c-cpns/home-siderbar'
+import { HomeWrapper } from './style'
+import HomeMain from './c-cpns/home-main'
 // import routes from './router/index'
 const Home = () => {
-  const navigate = useNavigate()
   return (
-    <div>
-      <div>
-        <button
-          onClick={() => {
-            navigate('/detail')
-          }}
-        >
-          文件详情页
-        </button>
+    <HomeWrapper>
+      <div className="home">
+        <HomeSiderbar />
+        <HomeMain />
+        <div></div>
       </div>
-    </div>
+    </HomeWrapper>
   )
 }
 
