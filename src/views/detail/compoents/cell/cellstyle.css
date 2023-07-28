@@ -1,0 +1,11 @@
+input {
+  outline: none;
+  width: 100%;
+  border: none;
+  height: 100%;
+  overflow: scroll;
+}
+
+input.actived {
+  background-color: aqua;
+}

@@ -8,7 +8,7 @@
 
 2.TypeScript变量名称采用小驼峰标识，常量全部使用大写字母，组件采用大驼峰；
 
-3.CSS采用普通CSS和styled-component结合来编写（全局采用普通CSS、局部采用styled-component）; 
+3.CSS采用普通CSS和styled-component结合来编写（全局采用普通CSS、局部采用styled-component）;
 
 4.整个项目统一使用函数式组件，拥抱Hooks；
 
@@ -18,15 +18,15 @@
 
 7.函数组件内部基本按照如下顺序编写代码：
 
--   组件内部state管理；
+- 组件内部state管理；
 
--   redux的hooks代码；
+- redux的hooks代码；
 
--   其他hooks相关代码（比如自定义hooks）；
+- 其他hooks相关代码（比如自定义hooks）；
 
--   其他逻辑代码；
+- 其他逻辑代码；
 
--   返回JSX代码；
+- 返回JSX代码；
 
 ## 项目目录结构划分
 
