@@ -1,15 +1,16 @@
 import React from 'react'
-import Table from './compoents/table/table'
+
+import Container from './compoents/container'
+import { DetailWrapper } from './style'
 import ActionBar from './compoents/action-bar/action-bar'
-import './indexstyle.css'
+import TitleBar from './compoents/titlebar'
 const Detail = () => {
   return (
-    <>
-      <ActionBar></ActionBar>
-      <div className="tablebar">
-        <Table></Table>
-      </div>
-    </>
+    <DetailWrapper>
+      <TitleBar />
+      <ActionBar />
+      <Container />
+    </DetailWrapper>
   )
 }
 

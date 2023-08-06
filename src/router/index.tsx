@@ -1,31 +1,38 @@
 import React, { lazy } from 'react'
-import type { RouteObject } from 'react-router-dom'
+import { Navigate, type RouteObject } from 'react-router-dom'
 // import { Navigate } from 'react-router-dom'
 
-const Home = lazy(() => import('@/views/home'))
-const Mydoc = lazy(() => import('@/views/home/c-views/mydoc'))
-const Trash = lazy(() => import('@/views/home/c-views/trash'))
+const Desktop = lazy(() => import('@/views/desktop'))
+const Home = lazy(() => import('@/views/desktop/c-views/home'))
+const Mydoc = lazy(() => import('@/views/desktop/c-views/mydoc'))
+const Trash = lazy(() => import('@/views/desktop/c-views/trash'))
 const Detail = lazy(() => import('@/views/detail'))
 
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Home />,
+    element: <Navigate to="/desktop" />
+  },
+  {
+    path: '/desktop',
+    element: <Desktop />,
     children: [
+      { path: '/desktop', element: <Navigate to="/desktop/home" /> },
       {
-        path: '/home',
+        path: '/desktop/home',
         element: <Home />
       },
       {
-        path: '/mydoc',
+        path: '/desktop/mydoc',
         element: <Mydoc />
       },
       {
-        path: '/trash',
+        path: '/desktop/trash',
         element: <Trash />
       }
     ]
   },
+
   {
     path: '/detail',
     element: <Detail />

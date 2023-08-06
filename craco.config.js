@@ -8,7 +8,8 @@ module.exports = {
   plugins: [{ plugin: CracoLessPlugin }],
   webpack: {
     alias: {
-      '@': resolve('src')
+      '@': resolve('src'),
+      '@mui/styled-engine': '@mui/styled-engine-sc'
     }
   }
 }

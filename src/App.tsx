@@ -4,9 +4,11 @@ import routes from './router/index'
 
 function App() {
   return (
-    <Suspense fallback="">
-      <div className="App">{useRoutes(routes)}</div>
-    </Suspense>
+    <>
+      <Suspense fallback="">
+        <div className="App">{useRoutes(routes)}</div>
+      </Suspense>
+    </>
   )
 }
 
