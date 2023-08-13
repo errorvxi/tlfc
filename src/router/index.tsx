@@ -1,3 +1,5 @@
+import Login from '@/views/login'
+import Register from '@/views/register/register'
 import React, { lazy } from 'react'
 import { Navigate, type RouteObject } from 'react-router-dom'
 // import { Navigate } from 'react-router-dom'
@@ -36,6 +38,11 @@ const routes: RouteObject[] = [
   {
     path: '/detail',
     element: <Detail />
+  },
+  { path: '/register', element: <Register /> },
+  {
+    path: '/login',
+    element: <Login />
   }
 ]
 

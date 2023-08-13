@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { convertToTitle } from '@/utils/convert'
 
 registerAllModules()
+
 let afterLoad: boolean = false
 const defaultArr = Array.from(new Array(200), () => new Array(26).fill(''))
 defaultArr[4][5] = ''
@@ -60,6 +61,7 @@ const Container = () => {
     keepLastIndex(barInput)
 
     const value = (e.target as HTMLDivElement).innerHTML
+    // hot.selectCell(row, col)
     hot.setDataAtCell(row, col, value)
     setOutput((e.target as HTMLDivElement).innerHTML)
   }
@@ -106,6 +108,7 @@ const Container = () => {
         </div>
         <div className="container">
           <HotTable
+            outsideClickDeselects={false}
             ref={hotRef}
             data={defaultArr}
             contextMenu={true}

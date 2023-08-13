@@ -3,8 +3,8 @@ import { useState } from 'react'
 import Cell from '../cell/cell'
 import './tablestyle.css'
 const Table = () => {
-  const columns = 15
-  const rows = 30
+  const columns = 26
+  const rows = 200
   const [tableArr, setTableArr] = useState(
     Array(rows)
       .fill(null)

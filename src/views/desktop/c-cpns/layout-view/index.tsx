@@ -6,14 +6,21 @@ import LayoutViewContent from './c-cpns/layout-view-content'
 interface IProps {
   children?: ReactNode
   text: string
+  setShow?: (show: boolean) => void
+  selected?: readonly string[]
+  setSelected?: (arg: readonly string[]) => void
 }
 
-const LayoutView: FC<IProps> = ({ text }) => {
+const LayoutView: FC<IProps> = ({ text, setShow, selected, setSelected }) => {
   return (
     <>
       <LayoutViewWrapper>
         <LayoutViewHeader text={text} />
-        <LayoutViewContent />
+        <LayoutViewContent
+          setShow={setShow as (show: boolean) => void}
+          selected={selected}
+          setSelected={setSelected}
+        />
       </LayoutViewWrapper>
     </>
   )

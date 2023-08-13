@@ -33,9 +33,21 @@ class TLFCRequest {
     return this.instance.request(config)
   }
 
-  get() {}
+  get(config: TLFCRequestConfig) {
+    return this.request({ ...config, method: 'get' })
+  }
 
-  posrt() {}
+  post(config: TLFCRequestConfig) {
+    return this.request({ ...config, method: 'POST' })
+  }
+
+  put(config: TLFCRequestConfig) {
+    return this.request({ ...config, method: 'put' })
+  }
+
+  delete(config: TLFCRequestConfig) {
+    return this.request({ ...config, method: 'delete' })
+  }
 }
 
 export default TLFCRequest

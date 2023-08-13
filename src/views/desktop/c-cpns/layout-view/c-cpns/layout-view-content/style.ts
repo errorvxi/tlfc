@@ -18,6 +18,12 @@ const LayoutViewContentWrapper = styled.div`
     width: 100%;
     cursor: pointer;
   }
+  .name {
+    cursor: pointer;
+    &:hover {
+      color: blue;
+    }
+  }
   .container {
     maxheight: 200px;
 

@@ -30,7 +30,7 @@ export const ActionBarWrapper = styled.div`
     font-weight: 700;
   }
   .btn {
-    margin-right: 16px;
+    margin: 0px 8px;
   }
   .insert {
     display: flex;
@@ -39,5 +39,8 @@ export const ActionBarWrapper = styled.div`
   }
   .arrow-back {
     margin-left: 10px;
+  }
+  .divider {
+    margin: 8px;
   }
 `

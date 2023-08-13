@@ -39,13 +39,13 @@ export const HeaderWrapper = styled.div`
         height: 32px;
         border-radius: 50%;
         color: #fff;
-        background-color: purple;
+        background-color: #3f51b5;
       }
     }
   }
 
   .right {
-    color: purple;
+    color: #3f51b5;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -89,7 +89,7 @@ export const HeaderWrapper = styled.div`
     }
 
     .panel {
-      color: #242424;
+      color: ##3f51b5;
       position: absolute;
       z-index: 99;
       right: 0;
