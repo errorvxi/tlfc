@@ -1,3 +1,2 @@
-export const BASE_URL =
-  'https://371fcb17-ba69-464a-9207-ae4778fa2484.mock.pstmn.io/'
+export const BASE_URL = 'http://127.0.0.1:4523/m1/3123720-0-default'
 export const TIME_OUT = 10000

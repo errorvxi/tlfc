@@ -21,8 +21,8 @@ export const fetchAcountLoginAction = createAsyncThunk(
     // 1.login logic
     const loginResult = await accountLoginRequest(payload)
     const { id, token } = loginResult.data
-
-    localCache.setCache('token', JSON.stringify(token))
+    localCache.setCache('token', '1')
+    // localCache.setCache('token', JSON.stringify(token))
     dispatch(changeUserTokenAction(token))
     localCache.setCache('id', id)
     // 2.jump to home
@@ -36,16 +36,18 @@ export const fetchUserInfoDataAction = createAsyncThunk(
     const userInfoResult = await requestUserInfoById(id)
     const userInfo = userInfoResult.data
     dispatch(changeUserInfoAction(userInfo))
-    console.log(userInfoResult)
-    // 2.request for user documents
-    const docsResult = await requestUserDocsById(id)
-    const docs = docsResult.data
-    console.log(docsResult)
-    console.log(docs)
-    dispatch(changeUserDocuments(docs))
   }
 )
 
+export const fetchUserDocsDataAction = createAsyncThunk(
+  'user/getData',
+  async (id: number, { dispatch }) => {
+    // 1.request for user documents
+    const docsResult = await requestUserDocsById(id)
+    const docs = docsResult.data
+    dispatch(changeUserDocuments(docs))
+  }
+)
 const initialState: IUserState = {
   id: '',
   username: '',
@@ -64,9 +66,16 @@ const userSlice = createSlice({
       state.id = payload.id
       state.username = payload.username
     },
+    changeUserDocsmentsByunShift(state, { payload }) {
+      state.documents.unshift(payload)
+    },
+    changeUserDocumentsByDeleteId(state, { payload }) {
+      const id = payload
+      const res = state.documents.find((item) => item.id == id)
+      state.documents.splice(res, 1)
+    },
     changeUserDocuments(state, { payload }) {
-      state.documents = payload
-      console.log(state.documents)
+      state.documents = payload.data
     }
   }
 })
@@ -74,7 +83,9 @@ const userSlice = createSlice({
 export const {
   changeUserDocuments,
   changeUserInfoAction,
-  changeUserTokenAction
+  changeUserTokenAction,
+  changeUserDocsmentsByunShift,
+  changeUserDocumentsByDeleteId
 } = userSlice.actions
 
 export default userSlice.reducer

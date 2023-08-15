@@ -6,8 +6,8 @@ class LocalCache {
   getCache(key: string) {
     // obj => string => obj
     const value = window.localStorage.getItem(key)
-    if (value) {
-      return JSON.parse(value)
+    if (value != 'undefined') {
+      return JSON.parse(value as string)
     }
   }
 

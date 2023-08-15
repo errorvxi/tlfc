@@ -10,7 +10,9 @@ import {
   Grid,
   Box,
   Typography,
-  Container
+  Container,
+  Snackbar,
+  Alert
 } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import { LoginWrapper } from './style'
@@ -32,6 +34,7 @@ function Copyright() {
 export default function SignIn() {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [open, setOpen] = React.useState(false)
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -41,13 +44,23 @@ export default function SignIn() {
     dispatch(fetchAcountLoginAction({ username, password }))
       .then(() => {
         const token = localCache.getCache('token')
+        // console.log('token', token)
+        if (typeof token == 'undefined') {
+          setOpen(true)
+        }
         if (token) navigate('/')
       })
       .catch
       // <Alert severity="error">This is an error alert — check it out!</Alert>
       ()
   }
+  function handleAlert(event?: any, reason?: string) {
+    if (reason === 'clickaway') {
+      return
+    }
 
+    setOpen(false)
+  }
   return (
     <LoginWrapper>
       <Container component="main" maxWidth="xs">
@@ -123,6 +136,16 @@ export default function SignIn() {
           <Copyright />
         </Box>
       </Container>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleAlert}
+      >
+        <Alert onClose={handleAlert} severity="error">
+          没有Token
+        </Alert>
+      </Snackbar>
     </LoginWrapper>
   )
 }

@@ -12,7 +12,7 @@ const Table = () => {
   )
 
   const UpdataText = (e: any, column: number, row: number, arr: string[][]) => {
-    console.log(`${row}row ${column}column has changed ${e.target.value}`)
+    // console.log(`${row}row ${column}column has changed ${e.target.value}`)
     const newArr = [...arr]
     newArr[row][column] = e.target.value
     setTableArr(newArr)

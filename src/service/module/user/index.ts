@@ -2,8 +2,8 @@ import tlfcRequest from '@/service'
 import { IAccount, IRegister } from './type'
 
 export function accountLoginRequest(account: IAccount) {
-  return tlfcRequest.post({
-    url: '/api/users/userLogin',
+  return tlfcRequest.get({
+    url: '/api/users/login',
     data: account
   })
 }
@@ -16,7 +16,7 @@ export function requestUserInfoById(id: number) {
 
 export function requestUserDocsById(id: number) {
   return tlfcRequest.get({
-    url: '/api/users/' + id + '/documents'
+    url: '/api/documents/' + id + '/gets'
   })
 }
 

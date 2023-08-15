@@ -26,6 +26,8 @@ import {
   IProps,
   Order
 } from './type'
+import { useAppSelector } from '@/store'
+import { shallowEqual } from 'react-redux'
 
 function createData(
   name: string,
@@ -40,13 +42,7 @@ function createData(
     activity
   }
 }
-
-const rows = [
-  createData('Cupcake', 'me', '18:01', 'create'),
-  createData('Donut', 'none', '08-12 09:32', ' edit'),
-  createData('Eclair', 'sc', '2023-02', 'open'),
-  createData('Frozen yoghurt', '159', '2022-01', 'delete')
-]
+const hashname = 'DZHlKQ1VUd1JqQkJE'
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -103,13 +99,13 @@ const headCells: readonly HeadCell[] = [
     align: 'center',
     disablePadding: false,
     label: '最近编辑时间'
-  },
-  {
-    id: 'activity',
-    align: 'left',
-    disablePadding: false,
-    label: '活动'
   }
+  // {
+  //   id: 'activity',
+  //   align: 'left',
+  //   disablePadding: false,
+  //   label: '活动'
+  // }
 ]
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
@@ -220,7 +216,18 @@ const LayoutViewContent: FC<IProps> = ({ setShow, selected, setSelected }) => {
   const [orderBy, setOrderBy] = useState<keyof Data>('owner')
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
-
+  let rows: Data[] = []
+  const { docs, username } = useAppSelector(
+    (state) => ({
+      docs: state.user.documents,
+      username: state.user.username
+    }),
+    shallowEqual
+  )
+  rows = docs.map((doc) => {
+    return createData(doc.doc_name, username, doc.last_accessed, '')
+  })
+  // console.log(rows)
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
     property: keyof Data
@@ -266,8 +273,8 @@ const LayoutViewContent: FC<IProps> = ({ setShow, selected, setSelected }) => {
     setPage(newPage)
   }
 
-  const handleDetailPage = () => {
-    window.open('/detail', '_blank') // + document hashname
+  const handleDetailPage = (hashname: string) => {
+    window.open('/detail' + '/?' + hashname, '_blank') // + document hashname
   }
 
   const handleChangeRowsPerPage = (
@@ -286,7 +293,7 @@ const LayoutViewContent: FC<IProps> = ({ setShow, selected, setSelected }) => {
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage
       ),
-    [order, orderBy, page, rowsPerPage]
+    [order, orderBy, page, rowsPerPage, rows.length]
   )
 
   return (
@@ -318,7 +325,7 @@ const LayoutViewContent: FC<IProps> = ({ setShow, selected, setSelected }) => {
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
-                    key={row.name}
+                    key={index}
                     selected={isItemSelected}
                     // sx={{ cursor: 'pointer' }}
                   >
@@ -339,13 +346,13 @@ const LayoutViewContent: FC<IProps> = ({ setShow, selected, setSelected }) => {
                       scope="row"
                       padding="none"
                       sx={{ cursor: 'pointer' }}
-                      onClick={handleDetailPage}
+                      onClick={() => handleDetailPage(hashname)}
                     >
                       {row.name}
                     </TableCell>
                     <TableCell align="left">{row.owner}</TableCell>
                     <TableCell align="center">{row.mtime}</TableCell>
-                    <TableCell align="left">{row.activity}</TableCell>
+                    {/* <TableCell align="left">{row.activity}</TableCell> */}
                   </TableRow>
                 )
               })}
