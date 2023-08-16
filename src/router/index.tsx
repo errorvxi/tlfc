@@ -34,7 +34,6 @@ const routes: RouteObject[] = [
       }
     ]
   },
-
   {
     path: '/detail',
     element: <Detail />

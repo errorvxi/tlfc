@@ -18,8 +18,17 @@ export function deleteDocument(user_id: number, doc_id: number) {
   })
 }
 
-export function shareOurDocument(url: string) {
-  return tlfcRequest.post({ url: url })
+export function shareDocument(
+  user_id: string,
+  shareDada: { s_id: any; type: any; target: any }
+) {
+  const doc_id = shareDada.s_id
+  const permission_type = shareDada.type
+  const target_user_id = shareDada.target
+  return tlfcRequest.post({
+    url: 'api/documents/' + user_id + '/share',
+    data: { doc_id, permission_type, target_user_id }
+  })
 }
 
 export function shareInDocument(url: string) {

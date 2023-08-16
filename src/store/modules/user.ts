@@ -49,7 +49,7 @@ export const fetchUserDocsDataAction = createAsyncThunk(
   }
 )
 const initialState: IUserState = {
-  id: '',
+  id: '28',
   username: '',
   token: '',
   documents: []

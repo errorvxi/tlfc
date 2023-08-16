@@ -37,7 +37,7 @@ class TLFCRequest {
     return this.request({ ...config, method: 'get' })
   }
 
-  post(config: TLFCRequestConfig) {
+  post(config: any) {
     return this.request({ ...config, method: 'post' })
   }
 

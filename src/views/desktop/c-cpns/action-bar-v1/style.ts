@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const HomeButtonWrapper = styled.div`
+  .contentText {
+    padding: 10px;
+    margin: 10px;
+  }
   .btns {
     display: flex;
     height: 32px;
@@ -13,5 +17,9 @@ export const HomeButtonWrapper = styled.div`
     .introduce {
       border-radius: 4px;
     }
+  }
+
+  .dialog-flex {
+    display: flex;
   }
 `

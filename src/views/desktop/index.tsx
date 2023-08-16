@@ -20,12 +20,14 @@ const Desktop = () => {
   const dispatch = useAppDispatch()
   const token = localCache.getCache('token')
 
-  if (typeof token === 'undefined') navigate('/login')
-
+  if (typeof token != 'string') navigate('/login')
+  console.log(typeof token)
   useEffect(() => {
-    const id = localCache.getCache('id')
-    dispatch(fetchUserInfoDataAction(id))
-    dispatch(fetchUserDocsDataAction(id))
+    const id = localCache.getCache('id') as string
+    console.log(id)
+    console.log(localCache)
+    dispatch(fetchUserInfoDataAction(Number(id)))
+    dispatch(fetchUserDocsDataAction(Number(id)))
   }, [dispatch])
   return (
     <HomeWrapper>

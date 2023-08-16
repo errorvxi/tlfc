@@ -3,12 +3,13 @@ class LocalCache {
     window.localStorage.setItem(key, JSON.stringify(value))
   }
 
-  getCache(key: string) {
+  getCache(key: string): null | string {
     // obj => string => obj
     const value = window.localStorage.getItem(key)
     if (value != 'undefined') {
       return JSON.parse(value as string)
     }
+    return null
   }
 
   deleteCache(key: string) {
