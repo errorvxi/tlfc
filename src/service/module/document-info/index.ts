@@ -14,7 +14,7 @@ export function createDocument(doc_name: string, user_id: number) {
 export function deleteDocument(user_id: number, doc_id: number) {
   return tlfcRequest.put({
     url: 'api/documents/' + user_id + '/delete',
-    data: doc_id
+    data: { doc_id }
   })
 }
 
@@ -25,6 +25,7 @@ export function shareDocument(
   const doc_id = shareDada.s_id
   const permission_type = shareDada.type
   const target_user_id = shareDada.target
+
   return tlfcRequest.post({
     url: 'api/documents/' + user_id + '/share',
     data: { doc_id, permission_type, target_user_id }

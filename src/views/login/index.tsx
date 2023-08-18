@@ -44,7 +44,6 @@ export default function SignIn() {
     dispatch(fetchAcountLoginAction({ username, password }))
       .then(() => {
         const token = localCache.getCache('token')
-        // console.log('token', token)
         if (typeof token == 'undefined') {
           setOpen(true)
         }

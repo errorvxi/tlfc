@@ -2,7 +2,7 @@ export interface IUserState {
   id: string
   username: string
   token: string
-  documents: any[]
+  documents: IDocumentInfoState[]
 }
 
 export interface IDocumentInfoState {

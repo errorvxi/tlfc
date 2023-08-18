@@ -99,7 +99,9 @@ const HeaderV1: FC<IProps> = () => {
                 <div className="panel-icon">
                   <PeopleAltIcon fontSize="large" />
                 </div>
-                <div className="other">使用其他账号登录</div>
+                <div className="other" onClick={handleOtherClick}>
+                  使用其他账号登录
+                </div>
               </div>
             </div>
           )}

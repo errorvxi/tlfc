@@ -1,2 +1,3 @@
-export const BASE_URL = 'http://127.0.0.1:4523/m1/3123720-0-default'
+export const BASE_URL = 'http://121.36.207.52:80'
 export const TIME_OUT = 10000
+export const WS_URL = 'http://121.36.207.52:80/websocket'

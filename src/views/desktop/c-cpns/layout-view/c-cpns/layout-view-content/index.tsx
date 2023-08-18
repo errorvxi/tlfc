@@ -224,10 +224,10 @@ const LayoutViewContent: FC<IProps> = ({ setShow, selected, setSelected }) => {
     }),
     shallowEqual
   )
+
   rows = docs.map((doc) => {
     return createData(doc.doc_name, username, doc.last_accessed, '')
   })
-  // console.log(rows)
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
     property: keyof Data

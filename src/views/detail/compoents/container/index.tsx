@@ -75,7 +75,6 @@ const Container = () => {
   }, [])
 
   function afterChange(changes: any, source: any): any {
-    console.log(changes, source)
     if (source === 'edit') {
       const s: string = changes[0][3]
       setOutput(s)
@@ -83,7 +82,6 @@ const Container = () => {
   }
   // function afterDocumentKeydown() {}
   function afterSelection(row: number, col: number) {
-    console.log(row, col)
     const location = convertToTitle(col + 1) + (row + 1).toString()
     setAddress(location)
     const data: string = hot.getDataAtCell(row, col)

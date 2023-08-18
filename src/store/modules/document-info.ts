@@ -48,8 +48,8 @@ export const deleteDocAction = createAsyncThunk(
     const { user_id, docs_id } = payload
     for (const id of docs_id) {
       const deleteRes: any = await deleteDocument(user_id, id)
-      if (deleteRes.statusText === 'OK') {
-        dispatch(changeUserDocumentsByDeleteId(id))
+      if (deleteRes.status === 200) {
+        dispatch(changeUserDocumentsByDeleteId({ id }))
       }
       if (deleteRes.code === 'ERR_BAD_REQUEST') {
         console.log('删除失败')

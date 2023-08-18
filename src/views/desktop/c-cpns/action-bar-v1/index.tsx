@@ -54,16 +54,18 @@ const ActionBarV1: FC<IProps> = ({ show, setShow, selected, setSelected }) => {
     if (selected.length !== 0) setSelected([])
   }
   function handleShare() {
-    const docs_id: number[] = []
+    const docs_id: string[] = []
     for (const item of selected) {
       for (const doc of docs) {
         if (item === doc.doc_name) docs_id.push(doc.doc_id)
       }
     }
+    console.log(docs_id)
     for (const id of docs_id) {
       const s_id = id.toString()
       shareDocument(user_id as string, { s_id, type, target })
     }
+    handleClose()
   }
   function handleOpen() {
     setOpen(true)
@@ -73,7 +75,7 @@ const ActionBarV1: FC<IProps> = ({ show, setShow, selected, setSelected }) => {
   }
   function handleDownload() {}
   function handleDelete() {
-    const docs_id: number[] = []
+    const docs_id: string[] = []
     for (const item of selected) {
       for (const doc of docs) {
         if (item === doc.doc_name) docs_id.push(doc.doc_id)

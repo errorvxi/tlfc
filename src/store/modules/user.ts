@@ -45,6 +45,7 @@ export const fetchUserDocsDataAction = createAsyncThunk(
     // 1.request for user documents
     const docsResult = await requestUserDocsById(id)
     const docs = docsResult.data
+
     dispatch(changeUserDocuments(docs))
   }
 )
@@ -70,12 +71,18 @@ const userSlice = createSlice({
       state.documents.unshift(payload)
     },
     changeUserDocumentsByDeleteId(state, { payload }) {
-      const id = payload
-      const res = state.documents.find((item) => item.id == id)
-      state.documents.splice(res, 1)
+      const id = payload.id
+
+      const res = state.documents.filter((item) => {
+        return item.doc_id !== id
+      })
+
+      state.documents = res
+      return state
     },
     changeUserDocuments(state, { payload }) {
-      state.documents = payload.data
+      if (typeof payload === 'undefined') state.documents = []
+      state.documents = payload
     }
   }
 })
